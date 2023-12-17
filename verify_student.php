@@ -4,22 +4,14 @@ if(!isset($_SESSION['type']))
 {
 	//echo "<script>window.location='index.php';</script>";
 }
-if(isset($_GET['id'])) {
-    // Get the ID from the URL parameter
-    $studentId = $_GET['id'];
-
-    // Create the unique ID by combining "student" with the retrieved ID
-    $uniqueID = "student" . $studentId;
-
-    // Update the record with the unique ID
-    $qry = "UPDATE student SET status='Active', uniqueID='$uniqueID' WHERE studentid=" . $studentId;
-    $rs = mysqli_query($con, $qry);
-
-    if ($rs) {
-        echo "<script>alert('Record updated successfully...!!');window.location='verify_student.php';</script>";
-    }
+if(isset($_GET['id']))
+{
+	$rs = mysqli_query($con,"update student set status='Active' where studentid=".$_GET['id']);
+	if($rs)
+	{
+		echo "<script>alert('Record updated successfully...!!');window.location='verify_student.php';</script>";
+	}
 }
-
 if(isset($_GET['did']))
 {
 	$rs = mysqli_query($con,"update student set status='Disapproved' where studentid=".$_GET['did']);
@@ -32,7 +24,7 @@ include("header.php")
 ?>
 <div class="container">
 	<div class="page">
-   <h3 align='center'>Verify Student</h3>
+   <h3 align='center'>Verify student</h3>
    <p>&nbsp;</p>
   <div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
     <table class="table table-bordered" id="dataTables-example">
@@ -67,9 +59,9 @@ include("header.php")
 		{
 		echo "<img src='images/821no-user-image.png' width='100px' height='100px' alt='$row[1]'/>";
 		}
-		else if(file_exists($row['profile_imge']))
+		else if(file_exists('upload/student/'.$row['profile_imge']))
 		{
-		echo "<img src='".$row['profile_imge']."' width='100px' height='100px' alt='$row[1]'/>";
+		echo "<img src='upload/student/".$row['profile_imge']."' width='100px' height='100px' alt='$row[1]'/>";
 		}
 		else
 		{

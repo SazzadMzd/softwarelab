@@ -2,13 +2,17 @@
 include("sqlcon.php");
 if(isset($_POST["Apply"]))
 {
-	echo $filename = rand().$_FILES["uploadresume"]["name"];
-	move_uploaded_file($_FILES["uploadresume"]["tmp_name"],"upload/cv/".$filename);
+  $upload_dir ="C:/xampp/htdocs/Alumni-student-system/images/resumes/";
+	      $filename = $upload_dir . $_FILES["uploadresume"]["name"];
+        move_uploaded_file($_FILES["uploadresume"]["tmp_name"], $filename);
+        $file_content = file_get_contents($_FILES["uploadresume"]["tmp_name"]);
+
 	$date = date("Y-m-d");
 	$qry = "insert into tbljobappln(jobid,candidatename,contactno,emailid,applndate,resumecopy,coverletter) values ('".$_POST['jobid']."','".$_POST['candidatename']."','".$_POST['contactno']."','".$_POST['email']."','$date','".$filename."','".$_POST['coverletter']."')";
 	if(mysqli_query($con, $qry))
 	{ 
-		echo "<script>alert('success!!!');</script>";
+    header('Location: send_mail.php');
+    echo "<script>alert('Please check your email for confirmation.');</script>";
 		echo "<script>window.location='job.php';</script>";
 	}
 	else
@@ -18,7 +22,7 @@ if(isset($_POST["Apply"]))
 }
 ?>
 <div class="bs-example" data-example-id="simple-horizontal-form">
-    <form class="form-horizontal" action="jobapply.php" method="post">
+    <form class="form-horizontal" action="jobapply.php" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-4 control-label">Candidate Name</label>
         <div class="col-sm-6">
@@ -50,13 +54,18 @@ if(isset($_POST["Apply"]))
 		<input type="file" class="form-control" id="uploadresume" name="uploadresume" placeholder="Upload Resume">
         </div>
       </div> 
+      
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <input type="submit" class="btn btn-default" name="Apply" value="APPLY">
 		      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
+      <div style="padding-left: 68px">
+      <label style="text-align: center; color: green;">**Please check your email to confirm your submission.</label>
+    </div>
+      
     </form>
   </div>	
- 
- 
+  
+  

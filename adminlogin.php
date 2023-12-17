@@ -11,13 +11,7 @@ if(isset($_POST['login']))
 		  
 		$_SESSION['uid'] = $result[0];
 		$_SESSION['name'] = $result[1];
-    $_SESSION['uniqueID'] = $result[5];
 		$_SESSION['type'] = "admin";
-    $_SESSION['profile_imge'] = $result['profilepic'];
-
-    // After the user logs in, set a session variable to indicate that the user is logged in.
-    $_SESSION['user_logged_in'] = true;
-
 		
 		echo "<script>window.location='index.php';</script>";
 	}

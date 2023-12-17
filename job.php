@@ -26,7 +26,7 @@ include("header.php")
      ?>
    
  <?php
-  $res = mysqli_query($con, "Select * from tbljob inner join tbluser on tbljob.alumnid=tbluser.userid where tbljob.lastdate >= CURDATE() and  tbljob.status='Active'");
+  $res = mysqli_query($con, "Select * from tbljob inner join tbluser on tbljob.alumnid=tbluser.userid");
   if(mysqli_num_rows($res) >0)
   {
 while($result = mysqli_fetch_array($res))

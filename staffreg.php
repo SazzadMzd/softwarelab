@@ -3,23 +3,10 @@ include("sqlcon.php");
 if(isset($_POST['register']))
 {
 
-  $staffphto = $_FILES['staffphto'];
-  $staffphtoName = $staffphto['name'];
-  $staffphtoTmpName = $staffphto['tmp_name'];
-
-  $staffphtoDirectory = "upload/staff/";
-
-  if (!empty($staffphtoName)) {
-    $uniquestaffphtoName = uniqid() . '_' . $staffphtoName;
-    $staffphtoPath = $staffphtoDirectory . $uniquestaffphtoName;
-    if (move_uploaded_file($staffphtoTmpName, $staffphtoPath)) {
-      // File uploaded successfully
-    } else {
-      echo "Failed to upload staff photo.";
-    }
-  }
+	$filename = rand().$_FILES["staffphto"]["name"];
+	move_uploaded_file($_FILES["staffphto"]["tmp_name"],"upload/staff/".$filename);
 	
-	 $qry = "insert into tblstaff(staffname, qualification, designation, dob, dateof_join, address, contactno, emailid, staff_pass, staffphoto, status) values ('".$_POST['lecturename']."','".$_POST['qualification']."','".$_POST['designation']."','".$_POST['dob']."','".$_POST['doj']."','".$_POST['address']."','".$_POST['contactno']."','".$_POST['email']."','".$_POST['password']."','".$staffphtoPath."','Inactive')";
+	 $qry = "insert into tblstaff(staffname, qualification, designation, dob, dateof_join, address, contactno, emailid, staff_pass, staffphoto, status) values ('".$_POST['lecturename']."','".$_POST['qualification']."','".$_POST['designation']."','".$_POST['dob']."','".$_POST['doj']."','".$_POST['address']."','".$_POST['contactno']."','".$_POST['email']."','".$_POST['password']."','".$filename."','Inactive')";
 	 
 	 if(mysqli_query($con, $qry))
 	 { 

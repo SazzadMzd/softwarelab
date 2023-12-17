@@ -17,8 +17,6 @@
 						<?php
 						if (!isset($_SESSION["type"])) {
 						?>
-							<li><a class="nav-in" href="event.php"><span data-letters="Events">Events</span></a></li>
-							<li><a class="nav-in" href="gallery.php"><span data-letters="Gallery">Gallery</span></a></li>
 							<li><a class="nav-in" href="login.php"><span data-letters="Login">Login</span></a></li>
 							<li><a class="nav-in" href="reg.php"><span data-letters="New Alumni">New Alumni</span></a></li>
 							<li><a class="nav-in" href="staffreg.php"><span data-letters="New Staff">New Staff</span></a></li>
@@ -36,24 +34,7 @@
 									<li><a href="verify_student.php" style='color:black'><span data-letters="Student">Student</span></a></li>
 								</ul>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="alumnimeet.php" style='color:black'><span data-letters="Add">Add</span></a></li>
-									<li><a href="verify_event.php" style='color:black'><span data-letters="Verify">Verify</span></a></li>
-									<li><a href="manage_events.php" style='color:black'><span data-letters="View/Update">View/Update</span></a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<!-- <li><a href="gallery.php" style='color:black'><span data-letters="View Gallery">View Gallery</span></a></li> -->
-									<li><a href="alumnigallery.php" style='color:black'><span data-letters="Update Gallery">Update Gallery</span></a></li>
-									<li><a href="manage_gallery.php" style='color:black'><span data-letters="Manage Gallery">Manage Gallery</span></a></li>
-									<li><a href="gallery.php" style='color:black'><span data-letters="View Gallery">View Gallery</span></a></li>
-
-								</ul>
-							</li>
+							
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Office Bearers<span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -67,23 +48,14 @@
 									<li><a href="logout.php" style='color:black'><span data-letters="Logout">Logout</span></a></li>
 								</ul>
 							</li>
+
 						<?php
 						} else if (isset($_SESSION["type"]) && $_SESSION['type'] == 'alumni') {
 						?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="alumnimeet.php" style='color:black'><span data-letters="Add">Add</span></a></li>
-									<li><a href="manage_events.php" style='color:black'><span data-letters="View/Update">View/Update</span></a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="gallery.php" style='color:black'><span data-letters="View Gallery">View Gallery</span></a></li>
-									<li><a href="alumnigallery.php" style='color:black'><span data-letters="Update Gallery">Update Gallery</span></a></li>
-								</ul>
-							</li>
+							<li><a class="nav-in" href="job.php"><span data-letters="Jobs">Jobs</span></a></li>
+							<li><a class="nav-in" href="mypost.php"><span data-letters="My Posts">My Posts</span></a></li>
+							<li><a class="nav-in" href="appliedJobs.php"><span data-letters="Applied Jobs">Applied Jobs</span></a></li>
+							
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -95,8 +67,6 @@
 						<?php
 						} else if (isset($_SESSION["type"]) && $_SESSION['type'] == 'student') {
 						?>
-							<li><a class="nav-in" href="event.php"><span data-letters="Events">Events</span></a></li>
-							<li><a class="nav-in" href="gallery.php"><span data-letters="Friends">Gallery</span></a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -108,14 +78,6 @@
 						<?php
 						} else if (isset($_SESSION["type"]) && $_SESSION['type'] == 'staff') {
 						?>
-							<li><a class="nav-in" href="event.php"><span data-letters="View Events">View Events</span></a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="gallery.php" style='color:black'><span data-letters="View Gallery">View Gallery</span></a></li>
-									<li><a href="alumnigallery.php" style='color:black'><span data-letters="Update Gallery">Update Gallery</span></a></li>
-								</ul>
-							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
 								<ul class="dropdown-menu">
